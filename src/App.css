@@ -1,0 +1,283 @@
+/*NotFoundPage css*/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  color: #fff;
+}
+
+.code {
+  font-size: 5rem;
+  color: #e50914;
+  margin-bottom: 1rem;
+}
+
+.message {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.homeBtn {
+  background-color: #e50914;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.homeBtn:hover {
+  background-color: #b00610;
+}
+
+/*Navbar css*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 32px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  z-index: 30;
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+  display: block;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+  color: #cccccc;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  color: white;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.icon-btn:hover {
+  background-color: rgba(100, 100, 100, 0.4);
+}
+
+.icon-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.login-btn {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.login-btn:hover {
+  background-color: #b00610;
+}
+
+/* 검색 오버레이 */
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  transform: translateY(-100%); /*안 보이게*/
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+.search-overlay.active {
+  transform: translateY(0); /*보이게*/
+}
+
+.close-btn {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: white;
+}
+
+.close-btn svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* 검색창 */
+.search-container {
+  max-width: 720px;
+  margin: 120px auto 0;
+  padding: 0 24px;
+  height: 300px;
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #555;
+  padding-bottom: 12px;
+}
+
+.search-input-wrap svg {
+  width: 24px;
+  height: 24px;
+  color: #aaa;
+  margin-right: 12px;
+}
+
+.search-input-wrap input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.search-input-wrap input::placeholder {
+  color: #666;
+}
+
+/* 인기 검색어 */
+.search-suggestions {
+  margin-top: 32px;
+  color: #bbb;
+}
+
+.search-suggestions p {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.search-suggestions ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.search-suggestions li {
+  background: #222;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.search-suggestions li:hover {
+  background: #333;
+}
+
+/*Footer css*/
+.footer {
+  border-top: 1px solid #333;
+  padding: 4rem 2rem;
+  background-color: #141414;
+  color: #aaa;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-copy {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #666;
+}

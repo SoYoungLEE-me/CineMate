@@ -1,0 +1,12 @@
+import React from "react";
+import "./LoginPage.style.css";
+
+const LoginPage = () => {
+  return (
+    <div className="login">
+      <h1>로그인 페이지입니다.</h1>
+    </div>
+  );
+};
+
+export default LoginPage;

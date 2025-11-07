@@ -1,0 +1,13 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+.home h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}

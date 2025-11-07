@@ -1,0 +1,14 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+/* 텍스트 스타일 */
+.home h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}

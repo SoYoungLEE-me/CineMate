@@ -1,0 +1,15 @@
+/* 홈 페이지 전체 영역 */
+.browse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+/* 텍스트 스타일 */
+.browse h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
