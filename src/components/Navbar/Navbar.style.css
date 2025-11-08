@@ -1,0 +1,233 @@
+/* Navbar.style.css */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 32px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  z-index: 30;
+  font-family: "Inter", sans-serif;
+}
+
+/* 스크롤 시 navbar 색상 변경 */
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.9);
+  transition: background-color 0.3s ease;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+  display: block;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  font-size: 15px;
+}
+
+.nav-menu a:hover {
+  color: #cccccc;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.login-btn {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.login-btn:hover {
+  background-color: #c40812;
+}
+
+.menu-btn {
+  display: none;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%; /*왼쪽 위치*/
+  width: 280px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 50;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu.active {
+  left: 0;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #333;
+}
+
+.mobile-logo {
+  height: 37px;
+  width: auto;
+}
+
+.menu-close-btn {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.menu-close-btn:hover {
+  color: white;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  padding: 24px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mobile-nav-list a {
+  color: #e5e5e5;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  transition: color 0.2s;
+}
+
+.mobile-nav-list a:hover {
+  color: white;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 40;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 4%;
+  }
+
+  .navbar-left {
+    gap: 16px;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .logo img {
+    height: 32px;
+  }
+
+  .login-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
