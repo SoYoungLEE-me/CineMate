@@ -50,7 +50,7 @@ const Navbar = () => {
           </div>
 
           <div className="navbar-right">
-            <button className="icon-btn" onClick={handleOpenSearch}>
+            <button className="search-icon-btn" onClick={handleOpenSearch}>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
 
@@ -91,7 +91,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* 사이드바 배경 오버레이 (선택 사항: 바깥 클릭 시 닫기용) */}
+      {/* 사이드바 오버레이 */}
       {isMenuOpen && (
         <div
           className="mobile-menu-overlay"

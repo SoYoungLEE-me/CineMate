@@ -3,6 +3,7 @@ import "./Banner.style.css";
 import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { ClipLoader } from "react-spinners";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
@@ -21,9 +22,38 @@ const Banner = () => {
     setCurrentIndex(index);
   };
 
-  if (isLoading) return <h2>Loading...</h2>;
-  if (isError) return <h2>{error.message}</h2>;
-  if (!data || !data.results || data.results.length === 0) return null;
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "600px",
+        }}
+      >
+        <ClipLoader color="#E50914" size={60} />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "600px",
+          color: "#E50914",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+        }}
+      >
+        <h2>{error.message}</h2>
+      </div>
+    );
+  }
 
   const movies = data.results.slice(0, 3);
 

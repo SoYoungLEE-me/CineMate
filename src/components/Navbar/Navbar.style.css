@@ -70,7 +70,7 @@
   gap: 20px;
 }
 
-.icon-btn {
+.search-icon-btn {
   background: transparent;
   border: none;
   padding: 8px;
@@ -81,9 +81,10 @@
   align-items: center;
   justify-content: center;
   transition: background-color 0.2s ease;
+  font-size: 25px;
 }
 
-.icon-btn:hover {
+.search-icon-btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -229,5 +230,9 @@
   .login-btn {
     padding: 6px 12px;
     font-size: 13px;
+  }
+
+  .search-icon-btn {
+    font-size: 20px;
   }
 }
