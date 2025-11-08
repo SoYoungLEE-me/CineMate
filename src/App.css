@@ -48,6 +48,12 @@
   overflow: hidden;
 }
 
+/* 스크롤 시 navbar 색상 변경 */
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.9);
+  transition: background-color 0.3s ease;
+}
+
 .navbar-container {
   display: flex;
   justify-content: space-between;
