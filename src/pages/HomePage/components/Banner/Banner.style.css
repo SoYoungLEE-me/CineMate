@@ -5,6 +5,19 @@
   overflow: hidden;
 }
 
+.banner-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+.banner-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
 .banner-bg {
   position: absolute;
   inset: 0;
@@ -63,6 +76,11 @@
   color: #e5e5e5;
   margin-bottom: 3rem;
   max-width: 500px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* 버튼 그룹 */
@@ -109,9 +127,31 @@
 
 /* 아이콘 */
 .icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
   margin-right: 0.5rem;
+}
+
+.banner-dots {
+  position: absolute;
+  bottom: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.8rem;
+  z-index: 20;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.dot.active {
+  background-color: rgba(255, 255, 255, 1);
 }
 
 @media (max-width: 1024px) {
@@ -167,7 +207,7 @@
 
 @media (max-width: 480px) {
   .banner {
-    height: 80vh;
+    height: 70vh;
   }
 
   .banner-content {
@@ -181,5 +221,9 @@
   .banner-desc {
     font-size: 0.875rem;
     -webkit-line-clamp: 2;
+  }
+
+  .banner-dots {
+    bottom: 6rem;
   }
 }
