@@ -1,8 +1,8 @@
 .banner {
   position: relative;
   width: 100%;
-  height: 120vh;
   overflow: hidden;
+  height: 800px;
 }
 
 .banner-slide {
@@ -134,7 +134,7 @@
 
 .banner-dots {
   position: absolute;
-  bottom: 8rem;
+  bottom: 6rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -156,7 +156,7 @@
 
 @media (max-width: 1024px) {
   .banner {
-    height: 90vh;
+    height: 600px;
   }
 
   .banner-title {
@@ -171,11 +171,15 @@
   .banner-content {
     padding: 0 4%;
   }
+
+  .banner-dots {
+    bottom: 5rem;
+  }
 }
 
 @media (max-width: 768px) {
   .banner {
-    height: 85vh;
+    height: 500px;
   }
 
   .banner-title {
@@ -203,11 +207,20 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .banner-dots {
+    bottom: 5rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 @media (max-width: 480px) {
   .banner {
-    height: 70vh;
+    height: 400px;
   }
 
   .banner-content {
@@ -224,6 +237,17 @@
   }
 
   .banner-dots {
-    bottom: 6rem;
+    bottom: 2rem;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .btn {
+    width: 110px;
+    height: 32px;
+    font-size: 0.6rem;
   }
 }
