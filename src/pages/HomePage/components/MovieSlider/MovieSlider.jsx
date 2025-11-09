@@ -85,6 +85,7 @@ const MovieSlider = ({ title, movies, isLoading, isError, error }) => {
                       {movie.vote_average.toFixed(1)}
                     </span>
                   </div>
+                  <p className="release_date">{movie.release_date}</p>
                   <div className="tag-box">
                     {movie.genre_ids.map((id) => (
                       <span key={id} className="tag">

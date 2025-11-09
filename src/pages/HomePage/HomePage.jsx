@@ -3,23 +3,67 @@ import "./HomePage.style.css";
 import Banner from "./components/Banner/Banner";
 import PopularMovieSlider from "./components/MovieSlider/MovieSlider";
 import { usePopularMoviesQuery } from "../../hooks/usePopularMovies";
+import { useNowPlayingMoviesQuery } from "../../hooks/useNowPlayingMovies";
+import { useUpcomingMoviesQuery } from "../../hooks/useUpcomingMovies";
 import MovieSlider from "./components/MovieSlider/MovieSlider";
 
 const HomePage = () => {
-  const { data, isLoading, isError, error } = usePopularMoviesQuery();
+  const {
+    data: popularData,
+    isLoading: popularLoading,
+    isError: popularError,
+    error: popularErrorData,
+  } = usePopularMoviesQuery();
+
+  const {
+    data: nowPlayingData,
+    isLoading: nowPlayingLoading,
+    isError: nowPlayingError,
+    error: nowPlayingErrorData,
+  } = useNowPlayingMoviesQuery();
+
+  const {
+    data: upcomingData,
+    isLoading: upcomingLoading,
+    isError: upcomingError,
+    error: upcomingErrorData,
+  } = useUpcomingMoviesQuery();
 
   return (
     <div className="home-page-container">
       <div className="home-movie-banner">
         <Banner />
       </div>
+      {/* 인기 영화 슬라이더 */}
       <div className="home-movie-slider">
         <MovieSlider
-          title="실시간 인기 영화"
-          movies={data?.results}
-          isLoading={isLoading}
-          isError={isError}
-          error={error}
+          title="실시간 인기 작품"
+          movies={popularData?.results}
+          isLoading={popularLoading}
+          isError={popularError}
+          error={popularErrorData}
+        />
+      </div>
+
+      {/* 현재 상영작 슬라이더 */}
+      <div className="home-movie-slider">
+        <MovieSlider
+          title="현재 극장 상영 중인 작품"
+          movies={nowPlayingData?.results}
+          isLoading={nowPlayingLoading}
+          isError={nowPlayingError}
+          error={nowPlayingErrorData}
+        />
+      </div>
+
+      {/* 개봉 예정작 슬라이더 */}
+      <div className="home-movie-slider">
+        <MovieSlider
+          title="공개 예정 작품"
+          movies={upcomingData?.results}
+          isLoading={upcomingLoading}
+          isError={upcomingError}
+          error={upcomingErrorData}
         />
       </div>
     </div>
