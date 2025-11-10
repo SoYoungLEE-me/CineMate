@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Banner.style.css";
-import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { ClipLoader } from "react-spinners";
 
-const Banner = () => {
-  const { data, isLoading, isError, error } = usePopularMoviesQuery();
+const Banner = ({ data, isError, error }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -21,21 +19,6 @@ const Banner = () => {
   const handleDotClick = (index) => {
     setCurrentIndex(index);
   };
-
-  if (isLoading) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "600px",
-        }}
-      >
-        <ClipLoader color="#E50914" size={60} />
-      </div>
-    );
-  }
 
   if (isError) {
     return (

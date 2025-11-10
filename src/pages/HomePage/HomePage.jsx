@@ -32,25 +32,17 @@ const HomePage = () => {
 
   const isLoading = popularLoading || nowPlayingLoading || upcomingLoading;
 
-  const isError = popularError || nowPlayingError || upcomingError;
-
-  const errorMessage =
-    popularErrorData?.message ||
-    nowPlayingErrorData?.message ||
-    upcomingErrorData?.message;
-
   if (isLoading) {
     return (
-      <div className="loader-box">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
         <ClipLoader color="#E50914" size={60} />
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className="error-box">
-        <h2>{errorMessage}</h2>
       </div>
     );
   }
@@ -58,7 +50,12 @@ const HomePage = () => {
   return (
     <div className="home-page-container">
       <div className="home-movie-banner">
-        <Banner />
+        <Banner
+          data={popularData}
+          isLoading={popularLoading}
+          isError={popularError}
+          error={popularErrorData}
+        />
       </div>
       {/* 인기 영화 슬라이더 */}
       <div className="home-movie-slider">
