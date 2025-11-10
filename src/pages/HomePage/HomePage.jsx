@@ -5,7 +5,9 @@ import PopularMovieSlider from "./components/MovieSlider/MovieSlider";
 import { usePopularMoviesQuery } from "../../hooks/usePopularMovies";
 import { useNowPlayingMoviesQuery } from "../../hooks/useNowPlayingMovies";
 import { useUpcomingMoviesQuery } from "../../hooks/useUpcomingMovies";
+import { useTopRankedMovieQuery } from "../../hooks/useTopRankedMovie";
 import MovieSlider from "./components/MovieSlider/MovieSlider";
+import TopRankedSlider from "./components/TopRankedMovieSlider/TopRankedSlider";
 import { ClipLoader } from "react-spinners";
 
 const HomePage = () => {
@@ -30,7 +32,15 @@ const HomePage = () => {
     error: upcomingErrorData,
   } = useUpcomingMoviesQuery();
 
-  const isLoading = popularLoading || nowPlayingLoading || upcomingLoading;
+  const {
+    data: topRankedData,
+    isLoading: topLoading,
+    isError: topError,
+    error: topErrorData,
+  } = useTopRankedMovieQuery();
+
+  const isLoading =
+    popularLoading || nowPlayingLoading || upcomingLoading || topLoading;
 
   if (isLoading) {
     return (
@@ -57,6 +67,17 @@ const HomePage = () => {
           error={popularErrorData}
         />
       </div>
+
+      {/* TOP 10 슬라이더 */}
+      <div className="home-movie-slider">
+        <TopRankedSlider
+          title="Top 10 작품"
+          movies={topRankedData?.results}
+          isError={topError}
+          error={topErrorData}
+        />
+      </div>
+
       {/* 인기 영화 슬라이더 */}
       <div className="home-movie-slider">
         <MovieSlider

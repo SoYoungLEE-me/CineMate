@@ -40,17 +40,16 @@
 }
 
 /* 화살표 스타일 */
-/* 수정된 부분 */
+
 .custom-arrow {
   position: absolute;
   top: 50%;
-  /* transform: translateY(-50%)만 남겨서 수직 중앙 정렬만 유지합니다. */
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5); /* 배경을 약간 넣어 잘 보이게 함 (선택사항) */
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   border: none;
   font-size: 38px;
-  width: 45px; /* 높이 약간 조정 */
+  width: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,19 +66,15 @@
 }
 
 .custom-arrow:hover {
-  transform: translateY(-50%) scale(1.1); /* hover 시 scale 유지 */
+  transform: translateY(-50%) scale(1.1);
 }
 
-/* 왼쪽 화살표 위치 수정 */
 .custom-arrow--left {
-  left: 10px; /* 화면 밖이 아닌 안쪽으로 10px 이동 */
-  /* transform: translate(-100%, -50%);  <-- 이 부분이 문제였음 삭제 */
+  left: 10px;
 }
 
-/* 오른쪽 화살표 위치 수정 */
 .custom-arrow--right {
-  right: 10px; /* 화면 밖이 아닌 안쪽으로 10px 이동 */
-  /* transform: translate(100%, -50%);  <-- 이 부분이 문제였음 삭제 */
+  right: 10px;
 }
 
 @media (max-width: 1024px) {

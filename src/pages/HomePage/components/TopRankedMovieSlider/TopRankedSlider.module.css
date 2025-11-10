@@ -1,0 +1,123 @@
+.topRankedContainer {
+  padding: 20px 0;
+  position: relative;
+  color: #fff;
+}
+
+.sliderTitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-left: 68px;
+  margin-bottom: 30px;
+}
+
+.sliderWrapper {
+  width: 95%;
+  margin: 0 auto;
+  position: relative;
+  overflow: visible;
+}
+
+.carouselItemGap {
+  padding-right: 25px;
+}
+
+.rankedSlide {
+  display: flex;
+  align-items: flex-end;
+}
+.rankBackground {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-right: 10px;
+  line-height: 0.9;
+  width: 40px;
+  text-align: right;
+  display: inline-block;
+}
+
+.rankCardWrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* ===== 화살표 버튼 ===== */
+.customArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  font-size: 38px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 20;
+  border-radius: 50%;
+}
+
+.sliderWrapper:hover .customArrow {
+  opacity: 1;
+}
+
+.customArrow:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.customArrowLeft {
+  left: -25px;
+}
+
+.customArrowRight {
+  right: -25px;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 1024px) {
+  .sliderTitle {
+    margin-left: 55px;
+    margin-bottom: 27px;
+  }
+  .rankBackground {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .sliderTitle {
+    margin-left: 35px;
+    margin-bottom: 23px;
+  }
+  .rankBackground {
+    font-size: 2rem;
+  }
+  .carouselItemGap {
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .sliderTitle {
+    margin-left: 18px;
+    font-size: 1.5rem;
+    margin-bottom: 17px;
+  }
+
+  .customArrow {
+    display: none;
+  }
+
+  .sliderWrapper {
+    width: 100%;
+  }
+
+  .rankBackground {
+    font-size: 1.8rem;
+  }
+}
