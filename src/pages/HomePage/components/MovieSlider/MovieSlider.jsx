@@ -4,8 +4,8 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import MovieCard from "../../../../common/MovieCard/MovieCard";
 
-const MovieSlider = ({ title, movies, isError, error }) => {
-  let carouselRef = React.useRef();
+const MovieSlider = ({ title, movies, isError, error, showRank = false }) => {
+  const carouselRef = React.useRef();
 
   if (isError) {
     return (
@@ -52,11 +52,16 @@ const MovieSlider = ({ title, movies, isError, error }) => {
             customTransition="transform 0.5s ease"
             containerClass="carousel-wrapper"
           >
-            {limitedMovies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
+            {limitedMovies.map((movie, index) => (
+              <div className="ranked-card" key={movie.id}>
+                {showRank && <span className="rank-badge">{index + 1}위</span>}
+                <MovieCard movie={movie} />
+              </div>
             ))}
           </Carousel>
         </div>
+
+        {/* 화살표 버튼 */}
         <button
           className="custom-arrow custom-arrow--left"
           onClick={() => carouselRef.current.previous()}

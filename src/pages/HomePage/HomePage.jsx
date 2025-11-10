@@ -1,13 +1,11 @@
 import React from "react";
 import "./HomePage.style.css";
 import Banner from "./components/Banner/Banner";
-import PopularMovieSlider from "./components/MovieSlider/MovieSlider";
 import { usePopularMoviesQuery } from "../../hooks/usePopularMovies";
 import { useNowPlayingMoviesQuery } from "../../hooks/useNowPlayingMovies";
 import { useUpcomingMoviesQuery } from "../../hooks/useUpcomingMovies";
 import { useTopRankedMovieQuery } from "../../hooks/useTopRankedMovie";
 import MovieSlider from "./components/MovieSlider/MovieSlider";
-import TopRankedSlider from "./components/TopRankedMovieSlider/TopRankedSlider";
 import { ClipLoader } from "react-spinners";
 
 const HomePage = () => {
@@ -70,11 +68,12 @@ const HomePage = () => {
 
       {/* TOP 10 슬라이더 */}
       <div className="home-movie-slider">
-        <TopRankedSlider
+        <MovieSlider
           title="Top 10 작품"
           movies={topRankedData?.results}
           isError={topError}
           error={topErrorData}
+          showRank={true}
         />
       </div>
 
