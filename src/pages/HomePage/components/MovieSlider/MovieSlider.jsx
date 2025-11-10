@@ -3,24 +3,9 @@ import "./MovieSlider.style.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ClipLoader } from "react-spinners";
 
-const MovieSlider = ({ title, movies, isLoading, isError, error }) => {
-  if (isLoading) {
-    return (
-      <div className="loader-box">
-        <ClipLoader color="#E50914" size={60} />
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className="error-box">
-        <h2>{error.message}</h2>
-      </div>
-    );
-  }
+const MovieSlider = ({ title, movies }) => {
+  let carouselRef = React.useRef();
 
   const genreMap = {
     28: "액션",
@@ -55,20 +40,21 @@ const MovieSlider = ({ title, movies, isLoading, isError, error }) => {
 
   return (
     <>
-      {" "}
       <h3 className="slider-title">{title}</h3>
       <div className="movie-slider">
         <div className="carousel-wrapper">
           <Carousel
+            ref={carouselRef}
             responsive={responsive}
             infinite
             autoPlay
             autoPlaySpeed={3000}
-            arrows
+            arrows={false}
             showDots={false}
             renderButtonGroupOutside={true}
             itemClass="carousel-item-padding"
             customTransition="transform 0.5s ease"
+            containerClass="carousel-wrapper"
           >
             {limitedMovies.map((movie) => (
               <div key={movie.id} className="movie-card">
@@ -101,6 +87,18 @@ const MovieSlider = ({ title, movies, isLoading, isError, error }) => {
             ))}
           </Carousel>
         </div>
+        <button
+          className="custom-arrow custom-arrow--left"
+          onClick={() => carouselRef.current.previous()}
+        >
+          ‹
+        </button>
+        <button
+          className="custom-arrow custom-arrow--right"
+          onClick={() => carouselRef.current.next()}
+        >
+          ›
+        </button>
       </div>
     </>
   );

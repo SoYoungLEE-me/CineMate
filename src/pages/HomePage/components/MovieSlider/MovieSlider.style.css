@@ -1,8 +1,8 @@
 .slider-title {
   font-size: 1.8rem;
   font-weight: bold;
-  margin-left: 70px;
-  margin-bottom: 40px;
+  margin-left: 68px;
+  margin-bottom: 30px;
 }
 
 .movie-slider {
@@ -17,7 +17,7 @@
 }
 
 .carousel-wrapper {
-  width: 93%;
+  width: 95%;
   margin: 0 auto;
   position: relative;
   overflow: visible; /* 카드 잘림 유지 */
@@ -90,7 +90,7 @@
 }
 
 .movie-title {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 4px;
 }
@@ -101,7 +101,7 @@
 }
 
 .release_date {
-  font-size: 12px;
+  font-size: 15px;
   color: #ccc;
   margin-top: 4px;
 }
@@ -119,7 +119,7 @@
   display: inline-block;
   background-color: #333;
   color: #fff;
-  font-size: 11px;
+  font-size: 0.8rem;
   border-radius: 6px;
   padding: 2px 6px;
   margin-right: 4px;
@@ -135,7 +135,7 @@
 .btn-add {
   border: none;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 0.8rem;
   border-radius: 6px;
   padding: 5px 10px;
   transition: all 0.2s ease;
@@ -146,56 +146,90 @@
   color: #fff;
 }
 .btn-add:hover {
-  background-color: #ff3344;
+  background-color: #ff6976;
 }
 
 /* 화살표 스타일 */
-.react-multiple-carousel__arrow {
-  background: none !important;
-  color: #fff !important;
-  border-radius: 0 !important;
-  width: 40px !important;
-  height: 60px !important;
-  font-size: 36px !important;
+/* 수정된 부분 */
+.custom-arrow {
   position: absolute;
   top: 50%;
+  /* transform: translateY(-50%)만 남겨서 수직 중앙 정렬만 유지합니다. */
   transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5); /* 배경을 약간 넣어 잘 보이게 함 (선택사항) */
+  color: #fff;
+  border: none;
+  font-size: 38px;
+  width: 45px; /* 높이 약간 조정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
   transition: all 0.3s ease;
-  z-index: 5;
+  z-index: 20;
+  border-radius: 50%;
 }
 
-.react-multiple-carousel__arrow--left {
-  left: -50px !important;
+/* 슬라이드 hover 시 화살표 등장 */
+.movie-slider:hover .custom-arrow {
+  opacity: 1;
 }
 
-.react-multiple-carousel__arrow--right {
-  right: -50px !important;
+.custom-arrow:hover {
+  transform: translateY(-50%) scale(1.1); /* hover 시 scale 유지 */
+}
+
+/* 왼쪽 화살표 위치 수정 */
+.custom-arrow--left {
+  left: 10px; /* 화면 밖이 아닌 안쪽으로 10px 이동 */
+  /* transform: translate(-100%, -50%);  <-- 이 부분이 문제였음 삭제 */
+}
+
+/* 오른쪽 화살표 위치 수정 */
+.custom-arrow--right {
+  right: 10px; /* 화면 밖이 아닌 안쪽으로 10px 이동 */
+  /* transform: translate(100%, -50%);  <-- 이 부분이 문제였음 삭제 */
+}
+
+@media (max-width: 1024px) {
+  .slider-title {
+    margin-left: 55px;
+    margin-bottom: 27px;
+  }
 }
 
 /* 모바일 반응형 */
 @media (max-width: 780px) {
   .slider-title {
-    margin-left: 40px;
+    margin-left: 35px;
+    margin-bottom: 23px;
   }
 }
 @media (max-width: 560px) {
   .slider-title {
-    margin-left: 30px;
+    margin-left: 18px;
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 17px;
   }
 
-  .react-multiple-carousel__arrow {
-    display: none !important;
+  .custom-arrow {
+    display: none;
   }
 
   .carousel-wrapper {
     width: 100%;
   }
 
+  .movie-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
   .btn-add,
   .btn-info {
-    font-size: 10px;
+    font-size: 0.7rem;
     padding: 4px 8px;
   }
 

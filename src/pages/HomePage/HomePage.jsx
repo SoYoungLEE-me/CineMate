@@ -6,6 +6,7 @@ import { usePopularMoviesQuery } from "../../hooks/usePopularMovies";
 import { useNowPlayingMoviesQuery } from "../../hooks/useNowPlayingMovies";
 import { useUpcomingMoviesQuery } from "../../hooks/useUpcomingMovies";
 import MovieSlider from "./components/MovieSlider/MovieSlider";
+import { ClipLoader } from "react-spinners";
 
 const HomePage = () => {
   const {
@@ -28,6 +29,31 @@ const HomePage = () => {
     isError: upcomingError,
     error: upcomingErrorData,
   } = useUpcomingMoviesQuery();
+
+  const isLoading = popularLoading || nowPlayingLoading || upcomingLoading;
+
+  const isError = popularError || nowPlayingError || upcomingError;
+
+  const errorMessage =
+    popularErrorData?.message ||
+    nowPlayingErrorData?.message ||
+    upcomingErrorData?.message;
+
+  if (isLoading) {
+    return (
+      <div className="loader-box">
+        <ClipLoader color="#E50914" size={60} />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="error-box">
+        <h2>{errorMessage}</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="home-page-container">
