@@ -1,20 +1,136 @@
+/* ===== 기본 영역 설정 ===== */
 .browse-result {
-  position: relative;
-  display: block !important;
   width: 100%;
-  height: auto;
-  padding-bottom: 100px;
-  padding-top: 300px;
+  min-height: 100vh;
   background-color: #141414;
   color: #fff;
   box-sizing: border-box;
-  overflow: visible;
+  padding-top: 120px; /* navbar와 간격 */
+  padding-bottom: 80px; /* footer 공간 확보 */
 }
 
-.browse-result > .container {
-  min-height: calc(100vh - 320px); /* 위·아래 여백 제외 */
+.browse-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* 좌측 필터 / 우측 카드 */
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
+/* ===== 필터 박스 ===== */
+.filter-box {
+  background-color: #111;
+  border-radius: 8px;
+  padding: 20px;
+  color: #ccc;
+  font-size: 1rem;
+  min-height: 500px;
+}
+
+/* ===== 카드 그리드 ===== */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 기본 모바일 */
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: start;
+}
+
+/* md 이상: 3개 */
+@media (min-width: 768px) {
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* lg 이상: 4개 */
+@media (min-width: 1024px) {
+  .movie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 카드 아이템 */
+.movie-grid-item {
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 2 / 3;
+  transition: transform 0.3s ease;
+}
+
+.movie-grid-item:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* ===== 페이지네이션 ===== */
+.pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.page-item {
+  background-color: #222;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.page-link {
+  display: block;
+  padding: 8px 14px;
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.page-item:hover .page-link {
+  background-color: #e50914;
+  color: #fff;
+}
+
+.active .page-link {
+  background-color: #e50914;
+  color: #fff;
+}
+
+/* ===== 로딩 & 에러 ===== */
+.browse-loading,
+.browse-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+}
+
+.browse-error {
+  color: #e50914;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* ===== 반응형: 필터 아래로 이동 ===== */
+@media (max-width: 1024px) {
+  .browse-container {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-box {
+    order: 2;
+  }
+
+  .movie-grid {
+    order: 1;
+  }
+}
+
+/* ===== 세부 텍스트 ===== */
 .browse-result .info-box {
   text-align: left;
 }
@@ -39,212 +155,4 @@
 .btn-info {
   font-size: 0.7rem;
   padding: 3px 7px;
-}
-
-.browse-loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 600px;
-}
-
-.browse-error {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 600px;
-  color: #e50914;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* 필터 박스 스타일 */
-.filter-box {
-  background-color: #111;
-  border-radius: 8px;
-  padding: 20px;
-  color: #ccc;
-  font-size: 1rem;
-  min-height: 500px;
-}
-
-.browse-result .browse-list-card-item .movie-card {
-  width: 100%;
-  max-width: 280px;
-  margin: 0 auto;
-  aspect-ratio: 2 / 3;
-  transition: transform 0.3s ease;
-}
-
-.browse-result .browse-list-card-item .movie-card:hover {
-  transform: scale(1.05);
-  z-index: 10;
-}
-
-.browse-result .browse-list-card-item .thumbnail-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* 페이지네이션 */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 60px;
-  gap: 8px;
-  list-style: none;
-  padding: 0;
-}
-
-.page-item {
-  background-color: #222;
-  border-radius: 6px;
-  overflow: hidden;
-  transition: background-color 0.2s ease;
-}
-
-.page-link {
-  display: block;
-  padding: 10px 16px;
-  color: #ccc;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.page-item:hover .page-link {
-  background-color: #e50914;
-  color: #fff;
-}
-
-.active .page-link {
-  background-color: #e50914;
-  color: #fff;
-  font-weight: 700;
-}
-
-/* 반응형 */
-@media (max-width: 768px) {
-  .browse-result {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-}
-
-.browse-result .info-box {
-  text-align: left;
-}
-
-.browse-result .movie-title {
-  font-size: 0.8rem;
-}
-
-.browse-result .release_date {
-  font-size: 12px;
-}
-
-.browse-result .star .rating {
-  font-size: 10px;
-}
-
-.browse-result .tag {
-  font-size: 0.7rem;
-}
-
-.browse-result .btn-add,
-.btn-info {
-  font-size: 0.7rem;
-  padding: 3px 7px;
-}
-
-.browse-loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 600px;
-}
-
-.browse-error {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 600px;
-  color: #e50914;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* 필터 박스 스타일 */
-.filter-box {
-  background-color: #111;
-  border-radius: 8px;
-  padding: 20px;
-  color: #ccc;
-  font-size: 1rem;
-  min-height: 500px;
-}
-
-.browse-result .browse-list-card-item .movie-card {
-  width: 100%;
-  max-width: 280px;
-  margin: 0 auto;
-  aspect-ratio: 2 / 3;
-  transition: transform 0.3s ease;
-}
-
-.browse-result .browse-list-card-item .movie-card:hover {
-  transform: scale(1.05);
-  z-index: 10;
-}
-
-.browse-result .browse-list-card-item .thumbnail-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* 페이지네이션 */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 60px;
-  gap: 8px;
-  list-style: none;
-  padding: 0;
-}
-
-.page-item {
-  background-color: #222;
-  border-radius: 6px;
-  overflow: hidden;
-  transition: background-color 0.2s ease;
-}
-
-.page-link {
-  display: block;
-  padding: 10px 16px;
-  color: #ccc;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.page-item:hover .page-link {
-  background-color: #e50914;
-  color: #fff;
-}
-
-.active .page-link {
-  background-color: #e50914;
-  color: #fff;
-  font-weight: 700;
-}
-
-/* 반응형 */
-@media (max-width: 768px) {
-  .browse-result {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
 }
