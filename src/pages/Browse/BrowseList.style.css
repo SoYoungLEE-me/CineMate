@@ -2,17 +2,17 @@
   position: relative;
   display: block !important;
   width: 100%;
-  min-height: 100vh; /* ✅ 전체 화면 채우기 */
-  padding-top: 120px; /* Navbar 여유 */
-  padding-bottom: 240px; /* ✅ Footer 높이만큼 확보 */
+  height: auto;
+  padding-bottom: 100px;
+  padding-top: 300px;
   background-color: #141414;
   color: #fff;
   box-sizing: border-box;
-  overflow: visible; /* 내부 카드가 커도 잘림 방지 */
+  overflow: visible;
 }
 
 .browse-result > .container {
-  padding-bottom: 80px; /* 내부 하단 여백 */
+  min-height: calc(100vh - 320px); /* 위·아래 여백 제외 */
 }
 
 .browse-result .info-box {
