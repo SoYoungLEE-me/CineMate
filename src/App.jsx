@@ -8,7 +8,7 @@ import LoginPage from "./pages/Login/LoginPage";
 
 function App() {
   return (
-    <>
+    <div className="App">
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<HomePage />} />
@@ -18,7 +18,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </>
+    </div>
   );
 }
 

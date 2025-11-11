@@ -20,7 +20,7 @@
   width: 95%;
   margin: 0 auto;
   position: relative;
-  overflow: visible; /* 카드 잘림 유지 */
+  overflow: visible;
 }
 
 /* 카드 간격 최소화 */

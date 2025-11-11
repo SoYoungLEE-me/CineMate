@@ -69,7 +69,7 @@ const HomePage = () => {
       {/* TOP 10 슬라이더 */}
       <div className="home-movie-slider">
         <MovieSlider
-          title="Top 10 작품"
+          title="평점 Top 10 작품"
           movies={topRankedData?.results}
           isError={topError}
           error={topErrorData}

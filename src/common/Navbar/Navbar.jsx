@@ -8,11 +8,16 @@ import {
   faBars,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const [keyword, setKeyword] = useState("");
 
   const handleOpenSearch = () => setIsSearchOpen(true);
   const handleCloseSearch = () => setIsSearchOpen(false);
@@ -22,6 +27,18 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const search = (e) => {
+    if (e.key === "Enter") {
+      handleOnSearch();
+      handleCloseSearch();
+      setKeyword("");
+    }
+  };
+
+  const handleOnSearch = () => {
+    navigate(`/browse?q=${keyword}`);
+  };
 
   return (
     <>
@@ -107,7 +124,13 @@ const Navbar = () => {
         <div className="search-container">
           <div className="search-input-wrap">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
-            <input type="text" placeholder="제목을 입력하세요." />
+            <input
+              type="text"
+              placeholder="제목을 입력하세요."
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              onKeyDown={search}
+            />
           </div>
         </div>
       </div>

@@ -17,13 +17,13 @@ const MovieCard = ({ movie }) => {
     return genreNameList;
   };
 
+  const posterUrl = movie.poster_path
+    ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+    : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/390px-No-Image-Placeholder.svg.png";
+
   return (
     <div className="movie-card">
-      <img
-        className="thumbnail-img"
-        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-        alt={movie.title}
-      />
+      <img className="thumbnail-img" src={posterUrl} alt={movie.title} />
       <div className="info-box">
         <h4 className="movie-title">{movie.title}</h4>
         <div className="rating-box">

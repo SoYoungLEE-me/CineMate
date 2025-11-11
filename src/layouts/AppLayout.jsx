@@ -5,13 +5,13 @@ import Footer from "../common/Footer/Footer";
 
 const AppLayout = () => {
   return (
-    <>
+    <div className="app-layout-wrapper">
       <Navbar />
       <main>
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
