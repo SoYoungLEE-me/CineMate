@@ -65,15 +65,21 @@
 }
 
 /* ===== 페이지네이션 ===== */
-.pagination {
+.pagination-controls {
   grid-column: 1 / -1;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 60px;
   gap: 8px;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .page-item {
@@ -88,16 +94,45 @@
   color: #ccc;
   text-decoration: none;
   font-weight: 500;
+  font-size: 14px;
 }
 
 .page-item:hover .page-link {
   background-color: #e50914;
   color: #fff;
+  border-radius: 6px;
 }
 
 .active .page-link {
   background-color: #e50914;
   color: #fff;
+  border-radius: 6px;
+}
+
+.first-last-btn {
+  border: none;
+  border-radius: 6px;
+  background-color: #222;
+  display: block;
+  padding: 8px 14px;
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.first-last-btn:hover:not(:disabled) {
+  background-color: #e50914;
+  color: #fff;
+}
+
+.first-last-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #222;
+  color: #ccc;
 }
 
 /* ===== 로딩 & 에러 ===== */
@@ -153,6 +188,6 @@
 
 .browse-result .btn-add,
 .btn-info {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   padding: 3px 7px;
 }

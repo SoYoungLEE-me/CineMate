@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./BrowseList.style.css";
 import MovieCard from "../../common/MovieCard/MovieCard";
 import { useSearchMoviesQuery } from "../../hooks/useSearchMovies";
@@ -10,10 +10,16 @@ const BrowseList = () => {
   const [query] = useSearchParams();
   const keyword = query.get("q") || "";
 
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 12;
+  const [page, setPage] = useState(1);
 
-  const { data, isLoading, isError, error } = useSearchMoviesQuery({ keyword });
+  const { data, isLoading, isError, error } = useSearchMoviesQuery({
+    keyword,
+    page,
+  });
+
+  useEffect(() => {
+    setPage(1);
+  }, [keyword]);
 
   if (isLoading) {
     return (
@@ -32,15 +38,26 @@ const BrowseList = () => {
   }
 
   const movies = data?.results || [];
-  const pageCount = Math.ceil(movies.length / itemsPerPage);
-  const offset = currentPage * itemsPerPage;
-  const currentItems = movies.slice(offset, offset + itemsPerPage);
+  const totalPages = Math.min(data?.total_pages || 0, 50);
 
   const handlePageClick = ({ selected }) => {
-    setCurrentPage(selected);
+    setPage(selected + 1);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleFirstPage = () => {
+    if (page !== 1) {
+      setPage(1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleLastPage = () => {
+    if (page !== totalPages) {
+      setPage(totalPages);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
   return (
     <div className="browse-result">
       <div className="browse-container">
@@ -49,8 +66,8 @@ const BrowseList = () => {
 
         {/* 카드 리스트 영역 */}
         <section className="movie-grid">
-          {currentItems.length > 0 ? (
-            currentItems.map((movie) => (
+          {movies.length > 0 ? (
+            movies.map((movie) => (
               <div key={movie.id} className="movie-grid-item">
                 <MovieCard movie={movie} />
               </div>
@@ -64,24 +81,47 @@ const BrowseList = () => {
           )}
 
           {/* 페이지네이션 */}
-          {pageCount > 1 && (
-            <ReactPaginate
-              previousLabel="〈 이전"
-              nextLabel="다음 〉"
-              breakLabel="..."
-              pageCount={pageCount}
-              onPageChange={handlePageClick}
-              containerClassName="pagination"
-              pageClassName="page-item"
-              pageLinkClassName="page-link"
-              previousClassName="page-item"
-              nextClassName="page-item"
-              previousLinkClassName="page-link"
-              nextLinkClassName="page-link"
-              breakClassName="page-item"
-              breakLinkClassName="page-link"
-              activeClassName="active"
-            />
+          {totalPages > 1 && (
+            <div className="pagination-controls">
+              <button
+                className={`page-link first-last-btn ${
+                  page === 1 ? "disabled" : ""
+                }`}
+                onClick={handleFirstPage}
+                disabled={page === 1}
+              >
+                «
+              </button>
+              <ReactPaginate
+                previousLabel="<"
+                nextLabel=">"
+                breakLabel="..."
+                pageCount={totalPages}
+                onPageChange={handlePageClick}
+                marginPagesDisplayed={0}
+                pageRangeDisplayed={4}
+                containerClassName="pagination"
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                previousClassName="page-item"
+                nextClassName="page-item"
+                previousLinkClassName="page-link"
+                nextLinkClassName="page-link"
+                breakClassName="page-item"
+                breakLinkClassName="page-link"
+                activeClassName="active"
+                forcePage={page - 1}
+              />
+              <button
+                className={`page-link first-last-btn ${
+                  page === totalPages ? "disabled" : ""
+                }`}
+                onClick={handleLastPage}
+                disabled={page === totalPages}
+              >
+                »
+              </button>
+            </div>
           )}
         </section>
       </div>
