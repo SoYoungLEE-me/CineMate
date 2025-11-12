@@ -5,6 +5,7 @@ import { useSearchMoviesQuery } from "../../hooks/useSearchMovies";
 import { useSearchParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import ReactPaginate from "react-paginate";
+import FilterBar from "./components/FilterBar";
 
 const BrowseList = () => {
   const [query] = useSearchParams();
@@ -62,7 +63,9 @@ const BrowseList = () => {
     <div className="browse-result">
       <div className="browse-container">
         {/* 필터 영역 */}
-        <aside className="filter-box">필터</aside>
+        <aside className="filter-box">
+          <FilterBar />
+        </aside>
 
         {/* 카드 리스트 영역 */}
         <section className="movie-grid">

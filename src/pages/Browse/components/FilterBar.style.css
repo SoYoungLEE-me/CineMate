@@ -1,0 +1,165 @@
+body {
+  background-color: #141414;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+/* --- 필터 전체 구조 --- */
+.filter-sidebar {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.accordion-box {
+  background: #111;
+  border: 1px solid #444;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+/* --- 헤더 --- */
+.accordion-header {
+  width: 100%;
+  padding: 16px;
+  background: #1f1f1f;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.accordion-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.accordion-arrow {
+  width: 20px;
+  height: 20px;
+  color: #aaa;
+  transition: transform 0.3s ease;
+}
+.accordion-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* --- 콘텐츠 --- */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: #181818;
+}
+.accordion-content.open {
+  max-height: 1000px;
+}
+
+/* --- 필터 섹션 --- */
+.filter-section {
+  padding: 16px;
+  border-top: 1px solid #333;
+}
+
+.filter-section h4 {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ddd;
+}
+
+.filter-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 8px;
+}
+
+/* --- noUiSlider 넷플릭스 테마 --- */
+.noUi-target {
+  background: #374151;
+  border-radius: 9999px;
+  border: none;
+  box-shadow: none;
+  height: 6px;
+}
+.noUi-connect {
+  background: #e50914;
+}
+
+.noUi-handle {
+  width: 14px !important;
+  height: 14px !important;
+  top: -4px !important;
+  right: -7px !important;
+  background: #e50914; /* 넷플릭스 레드 */
+  border-radius: 50%;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.noUi-handle:focus {
+  outline: none;
+}
+.noUi-handle::before,
+.noUi-handle::after {
+  display: none;
+}
+
+/* --- 장르 버튼 --- */
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.genre-btn {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e50914, #ff7b00);
+  color: #fff;
+  box-shadow: 0 0 6px rgba(255, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.genre-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.sort-section {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  gap: 8px;
+}
+
+.sort-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  text-align: left;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sort-btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+.sort-btn.active {
+  color: #e50914;
+  font-weight: 600;
+}
