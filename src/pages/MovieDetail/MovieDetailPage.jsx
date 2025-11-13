@@ -49,12 +49,20 @@ const MovieDetailPage = () => {
     );
   }
 
-  console.log("ddd", data);
-
   return (
-    <div>
-      <Banner data={data} single={true} autoSlide={false} showButtons={true} />
-    </div>
+    <>
+      <div className="hero-section">
+        <Banner
+          data={data}
+          single={true}
+          autoSlide={false}
+          showButtons={true}
+        />
+      </div>
+      <div>
+        <h1>여기세 구체적인 정보가 들어가요</h1>
+      </div>
+    </>
   );
 };
 

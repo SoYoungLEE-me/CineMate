@@ -3,7 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 
 const fetchDetailMovies = ({ queryKey }) => {
   const [, id] = queryKey;
-  return api.get(`/movie/${id}`);
+  return api.get(`/movie/${id}`, {
+    params: {
+      append_to_response: "release_dates",
+    },
+  });
 };
 
 export const useDetailMoviesQuery = ({ id }) => {
