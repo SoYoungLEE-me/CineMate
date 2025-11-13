@@ -3,10 +3,15 @@ import { useParams } from "react-router-dom";
 import { useDetailMoviesQuery } from "../../hooks/useDetailMovies";
 import Banner from "../../common/Banner/Banner";
 import { ClipLoader } from "react-spinners";
+import DetailInfo from "./components/DetailInfo/DetailInfo";
 
 const MovieDetailPage = () => {
   let { id } = useParams();
   const { data, isLoading, isError, error } = useDetailMoviesQuery({ id });
+
+  console.log("detail response:", data);
+
+  const keywords = data?.keywords?.keywords?.slice(0, 6)?.map((k) => k.name);
 
   if (isLoading) {
     return (
@@ -41,14 +46,6 @@ const MovieDetailPage = () => {
     );
   }
 
-  if (isError) {
-    return (
-      <div style={{ textAlign: "center", padding: "100px", color: "red" }}>
-        {error.message}
-      </div>
-    );
-  }
-
   return (
     <>
       <div className="hero-section">
@@ -59,8 +56,18 @@ const MovieDetailPage = () => {
           showButtons={true}
         />
       </div>
-      <div>
-        <h1>여기세 구체적인 정보가 들어가요</h1>
+      <div className="movie-detail-info">
+        <DetailInfo
+          poster={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+          cast={data.credits?.cast
+            ?.slice(0, 3)
+            .map((c) => c.name)
+            .join(", ")}
+          genres={data.genres?.map((g) => g.name).join(", ")}
+          features={keywords}
+          rating={data.vote_average.toFixed(1)}
+          ratingCount={data.vote_count}
+        />
       </div>
     </>
   );

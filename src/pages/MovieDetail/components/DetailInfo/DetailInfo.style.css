@@ -1,0 +1,139 @@
+.detail-info-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  color: #ffffff;
+  margin-bottom: 4rem;
+  margin: 0 auto; /* 가운데 정렬 */
+  padding: 20px;
+  max-width: 900px;
+}
+
+@media (min-width: 768px) {
+  .detail-info-container {
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+/* 포스터 */
+.detail-poster {
+  margin-right: 50px;
+}
+.detail-poster img {
+  width: 200px;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(63, 63, 63, 0.4);
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .detail-poster img {
+    width: 100%;
+  }
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.4rem;
+}
+
+.label {
+  color: #9ca3af;
+  margin-right: 7px;
+  min-width: 50px;
+}
+
+.label {
+  color: #9ca3af;
+}
+
+.detail-features {
+  margin-top: 2rem;
+}
+
+.detail-feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.detail-feature-tags .tag {
+  display: inline-block;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  padding: 6px 12px;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: 1px solid #3a3a3a;
+  transition: all 0.2s;
+}
+
+.tag:hover {
+  background-color: #e50914;
+  border-color: #e50914;
+}
+
+/* 평점 박스 */
+.rating-box {
+  margin-top: 2rem;
+}
+
+.rating-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  margin-right: 12px;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rating-score {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #e50914;
+}
+
+.rating-outof {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin-left: 7px;
+}
+
+.rating-count {
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  color: #6b7280;
+  margin-left: 7px;
+}
+
+@media (max-width: 768px) {
+  .detail-feature-tags .tag {
+    font-size: 0.9rem;
+  }
+
+  .detail-poster {
+    margin: 0 auto;
+  }
+  .detail-info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 전체는 가운데 */
+    text-align: center;
+    width: 100%;
+  }
+
+  /* 출연, 장르만 왼쪽 정렬 */
+  .info-row {
+    width: 100%;
+    display: flex;
+    text-align: left;
+    gap: 8px;
+  }
+}

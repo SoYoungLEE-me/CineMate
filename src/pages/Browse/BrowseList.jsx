@@ -25,7 +25,7 @@ const BrowseList = () => {
 
   // 실제 API 호출에 쓰일 필터 값 (적용 후 상태)
   const [filters, setFilters] = useState({
-    sortOption: "release_date.desc",
+    sortOption: "popularity.desc",
     yearRange: [1970, currentYear],
     ratingRange: [0, 10],
     selectedGenres: [],

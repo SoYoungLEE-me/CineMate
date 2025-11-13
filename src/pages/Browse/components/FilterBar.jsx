@@ -104,19 +104,19 @@ const FilterBar = ({ filters, onApply, onSortChange }) => {
           <div className="sort-section">
             <button
               className={`sort-btn ${
-                filters.sortOption === "release_date.desc" ? "active" : ""
-              }`}
-              onClick={() => onSortChange("release_date.desc")}
-            >
-              최신순
-            </button>
-            <button
-              className={`sort-btn ${
                 filters.sortOption === "popularity.desc" ? "active" : ""
               }`}
               onClick={() => onSortChange("popularity.desc")}
             >
               인기순
+            </button>
+            <button
+              className={`sort-btn ${
+                filters.sortOption === "release_date.desc" ? "active" : ""
+              }`}
+              onClick={() => onSortChange("release_date.desc")}
+            >
+              최신순
             </button>
             <button
               className={`sort-btn ${

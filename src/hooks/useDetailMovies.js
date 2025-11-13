@@ -5,7 +5,7 @@ const fetchDetailMovies = ({ queryKey }) => {
   const [, id] = queryKey;
   return api.get(`/movie/${id}`, {
     params: {
-      append_to_response: "release_dates",
+      append_to_response: "release_dates,credits,keywords",
     },
   });
 };
