@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import BrowseList from "./pages/Browse/BrowseList";
 import LoginPage from "./pages/Login/LoginPage";
+import MovieDetailPage from "./pages/MovieDetail/MovieDetailPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           {/* 404 Not Found */}
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/detail/:id" element={<MovieDetailPage />} />
         </Route>
       </Routes>
     </div>

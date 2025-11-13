@@ -130,9 +130,22 @@ body {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.genre-btn.active {
+  background: linear-gradient(
+    90deg,
+    #ff7b00,
+    #e50914
+  ); /* 반대 방향으로 그라데이션 */
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.8), 0 0 30px rgba(255, 123, 0, 0.5);
+  transform: scale(1.02);
+  border: 2px solid #fff;
+  font-weight: 700;
+  color: #fff;
+}
+
 .genre-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(255, 50, 0, 0.7);
 }
 
 .sort-section {
@@ -162,4 +175,43 @@ body {
 .sort-btn.active {
   color: #e50914;
   font-weight: 600;
+}
+
+.apply-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.apply-btn,
+.reset-btn {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.apply-btn {
+  background: linear-gradient(90deg, #e50914, #ff7b00);
+  color: #fff;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+}
+
+.apply-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+}
+
+.reset-btn {
+  background: #333;
+  color: #ddd;
+}
+
+.reset-btn:hover {
+  background: #444;
+  color: #fff;
 }

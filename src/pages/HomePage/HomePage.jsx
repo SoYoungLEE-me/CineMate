@@ -1,6 +1,6 @@
 import React from "react";
 import "./HomePage.style.css";
-import Banner from "./components/Banner/Banner";
+import Banner from "../../common/Banner/Banner";
 import { usePopularMoviesQuery } from "../../hooks/usePopularMovies";
 import { useNowPlayingMoviesQuery } from "../../hooks/useNowPlayingMovies";
 import { useUpcomingMoviesQuery } from "../../hooks/useUpcomingMovies";
@@ -63,6 +63,9 @@ const HomePage = () => {
           isLoading={popularLoading}
           isError={popularError}
           error={popularErrorData}
+          autoSlide={true}
+          showButtons={true}
+          single={false}
         />
       </div>
 

@@ -3,9 +3,15 @@ import "./MovieCard.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   const { data: genreData } = useMovieGenreQuery();
+  const navigate = useNavigate();
+
+  const showMovieDetail = () => {
+    navigate(`/detail/${movie.id}`);
+  };
 
   const showGenre = (genreIdList) => {
     if (!genreData) return [];
@@ -39,7 +45,7 @@ const MovieCard = ({ movie }) => {
           ))}
         </div>
         <div className="button-box">
-          <button className="btn-info">
+          <button className="btn-info" onClick={showMovieDetail}>
             <FontAwesomeIcon icon={faCircleInfo} /> 상세보기
           </button>
           <button className="btn-add">＋ 보고싶어요</button>

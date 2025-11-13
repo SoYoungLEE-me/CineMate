@@ -1,26 +1,73 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
 import "./BrowseList.style.css";
+
 import MovieCard from "../../common/MovieCard/MovieCard";
+
 import { useSearchMoviesQuery } from "../../hooks/useSearchMovies";
+
 import { useSearchParams } from "react-router-dom";
+
 import { ClipLoader } from "react-spinners";
+
 import ReactPaginate from "react-paginate";
+
 import FilterBar from "./components/FilterBar";
 
 const BrowseList = () => {
   const [query] = useSearchParams();
+
   const keyword = query.get("q") || "";
+
+  const currentYear = new Date().getFullYear();
 
   const [page, setPage] = useState(1);
 
+  // 실제 API 호출에 쓰일 필터 값 (적용 후 상태)
+  const [filters, setFilters] = useState({
+    sortOption: "release_date.desc",
+    yearRange: [1970, currentYear],
+    ratingRange: [0, 10],
+    selectedGenres: [],
+  });
+
   const { data, isLoading, isError, error } = useSearchMoviesQuery({
     keyword,
+
     page,
+
+    ...filters,
   });
 
   useEffect(() => {
+    setFilters((prev) => ({
+      ...prev, //sortOption 유지!
+      yearRange: [1970, currentYear],
+      ratingRange: [0.0, 10.0],
+      selectedGenres: [],
+    }));
+
     setPage(1);
-  }, [keyword]);
+  }, [keyword, currentYear]);
+
+  const handleFilterApply = (newFilters) => {
+    setFilters((prev) => ({
+      ...prev, //
+      ...newFilters,
+    }));
+
+    setPage(1);
+  };
+
+  const handleSortChange = (newSort) => {
+    setFilters((prev) => ({ ...prev, sortOption: newSort }));
+
+    setPage(1);
+  };
+
+  const movies = data?.results || [];
+
+  const totalPages = Math.min(data?.total_pages || 0, 50);
 
   if (isLoading) {
     return (
@@ -38,17 +85,16 @@ const BrowseList = () => {
     );
   }
 
-  const movies = data?.results || [];
-  const totalPages = Math.min(data?.total_pages || 0, 50);
-
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleFirstPage = () => {
     if (page !== 1) {
       setPage(1);
+
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -56,18 +102,22 @@ const BrowseList = () => {
   const handleLastPage = () => {
     if (page !== totalPages) {
       setPage(totalPages);
+
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+
   return (
     <div className="browse-result">
       <div className="browse-container">
-        {/* 필터 영역 */}
         <aside className="filter-box">
-          <FilterBar />
+          <FilterBar
+            filters={filters}
+            onApply={handleFilterApply}
+            onSortChange={handleSortChange}
+          />
         </aside>
 
-        {/* 카드 리스트 영역 */}
         <section className="movie-grid">
           {movies.length > 0 ? (
             movies.map((movie) => (
@@ -84,6 +134,7 @@ const BrowseList = () => {
           )}
 
           {/* 페이지네이션 */}
+
           {totalPages > 1 && (
             <div className="pagination-controls">
               <button
@@ -95,6 +146,7 @@ const BrowseList = () => {
               >
                 «
               </button>
+
               <ReactPaginate
                 previousLabel="<"
                 nextLabel=">"
@@ -115,6 +167,7 @@ const BrowseList = () => {
                 activeClassName="active"
                 forcePage={page - 1}
               />
+
               <button
                 className={`page-link first-last-btn ${
                   page === totalPages ? "disabled" : ""

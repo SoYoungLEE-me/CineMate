@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 800px;
+  height: 700px;
 }
 
 .banner-slide {
@@ -69,18 +69,46 @@
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* 설명 */
+/* overview */
+/* 기본: 줄임표(...) 자동 적용 */
 .banner-desc {
   font-size: 1.125rem;
   line-height: 1.6;
   color: #e5e5e5;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   max-width: 500px;
+
   display: -webkit-box;
-  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* 홈 + 디테일 둘 다 줄임표 4줄 */
+.banner-desc.clamped {
+  -webkit-line-clamp: 4;
+}
+
+/* 디테일에서 전체보기일 때 */
+.banner-desc.expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  overflow: visible;
+  max-height: none;
+  text-overflow: unset;
+}
+
+/* 더보기 버튼 스타일 */
+.read-more-inline {
+  color: #ccc;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.read-more-inline:hover {
+  color: #fff;
 }
 
 /* 버튼 그룹 */
@@ -250,4 +278,27 @@
     height: 32px;
     font-size: 0.6rem;
   }
+}
+
+.banner-meta {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.banner-meta .match {
+  color: #46d369;
+}
+
+.banner-meta .year,
+.banner-meta .adult,
+.banner-meta .runtime {
+  color: #ddd;
+  border: 1px solid #555;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 14px;
 }
