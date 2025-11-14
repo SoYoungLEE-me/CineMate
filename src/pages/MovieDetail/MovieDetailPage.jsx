@@ -4,6 +4,8 @@ import { useDetailMoviesQuery } from "../../hooks/useDetailMovies";
 import Banner from "../../common/Banner/Banner";
 import { ClipLoader } from "react-spinners";
 import DetailInfo from "./components/DetailInfo/DetailInfo";
+import ReviewList from "./components/ReviewList/ReviewList";
+import "./MovieDetailPage.style.css";
 
 const MovieDetailPage = () => {
   let { id } = useParams();
@@ -67,7 +69,12 @@ const MovieDetailPage = () => {
           features={keywords}
           rating={data.vote_average.toFixed(1)}
           ratingCount={data.vote_count}
+          budget={data.budget}
+          production_countries={data.production_countries}
         />
+      </div>
+      <div className="review-section-container">
+        <ReviewList reviews={data?.reviews?.results} />
       </div>
     </>
   );

@@ -8,6 +8,8 @@ const DetailInfo = ({
   features,
   rating,
   ratingCount,
+  budget,
+  production_countries,
 }) => {
   return (
     <div className="detail-info-container">
@@ -27,6 +29,21 @@ const DetailInfo = ({
           <span className="label">장르 :</span>
           <span>{genres}</span>
         </p>
+
+        {production_countries?.length > 0 && (
+          <p className="info-row">
+            <span className="label">제작 국가 :</span>
+            <span>{production_countries.map((c) => c.name).join(", ")}</span>
+          </p>
+        )}
+
+        {budget > 0 && (
+          <p className="info-row">
+            <span className="label">예산 :</span>
+            <span>{budget.toLocaleString()}$</span>
+          </p>
+        )}
+
         <div className="detail-features">
           <div className="detail-feature-tags">
             {features?.map((tag, index) => (

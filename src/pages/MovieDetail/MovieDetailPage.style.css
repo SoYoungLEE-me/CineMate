@@ -5,3 +5,12 @@
 .movie-detail-info {
   margin: 0 auto; /* 가운데 정렬 */
 }
+
+.review-section-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8rem;
+  max-width: 900px;
+  margin: 0 auto;
+}

@@ -1,0 +1,70 @@
+/* 전체 섹션 */
+.review-section {
+  margin-top: 4rem;
+}
+
+.review-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.review-empty {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+/* 리스트 */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 리뷰 아이템 */
+.review-item {
+  background: rgba(31, 41, 55, 0.6);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+}
+
+/* 헤더 */
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.review-author {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.review-date {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* 내용 */
+.review-content {
+  color: #d1d5db;
+  line-height: 1.6;
+  font-size: 1rem;
+  white-space: pre-line; /* 줄바꿈 처리 */
+}
+
+/* 더보기/접기 버튼 */
+.review-toggle {
+  margin-left: 0.4rem;
+  font-size: 0.85rem;
+  color: #ef4444;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.review-toggle:hover {
+  text-decoration: underline;
+}
