@@ -30,8 +30,8 @@ const MovieSlider = ({ title, movies, isError, error, showRank = false }) => {
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1440 }, items: 5 },
     laptop: { breakpoint: { max: 1440, min: 1024 }, items: 4 },
-    tablet: { breakpoint: { max: 1024, min: 560 }, items: 3 },
-    mobile: { breakpoint: { max: 560, min: 0 }, items: 3 },
+    tablet: { breakpoint: { max: 1024, min: 780 }, items: 3 },
+    mobile: { breakpoint: { max: 780, min: 0 }, items: 2 },
   };
 
   return (

@@ -9,7 +9,7 @@ import {
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
 import VideoModal from "../VideoModal/VideoModal";
-import { useMovieVideosQuery } from "../../hooks/fetchMovieVideos";
+import { useMovieVideosQuery } from "../../hooks/useMovieVideos";
 
 const Banner = ({
   data,

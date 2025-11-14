@@ -4,7 +4,7 @@
 }
 
 .review-title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
   margin-bottom: 2rem;
   color: #ffffff;
@@ -67,4 +67,10 @@
 
 .review-toggle:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .review-title {
+    margin-left: 1rem;
+  }
 }

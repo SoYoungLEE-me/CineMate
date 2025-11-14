@@ -41,7 +41,7 @@ const BrowseList = () => {
 
   useEffect(() => {
     setFilters((prev) => ({
-      ...prev, //sortOption 유지!
+      ...prev, //sortOption 유지
       yearRange: [1970, currentYear],
       ratingRange: [0.0, 10.0],
       selectedGenres: [],

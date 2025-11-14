@@ -73,7 +73,9 @@ const FilterBar = ({ filters, onApply, onSortChange }) => {
     ratingSliderRef.current.noUiSlider.set(resetState.ratingRange);
   };
 
-  const handleApply = () => onApply(localFilters);
+  const handleApply = () => {
+    onApply(localFilters);
+  };
 
   return (
     <aside className="filter-sidebar">
