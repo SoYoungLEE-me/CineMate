@@ -313,3 +313,69 @@
 .search-input-wrap input::placeholder {
   color: #666;
 }
+
+/*오버레이 안 슬라이드 구현*/
+.search-overlay .search-overlay-marquee {
+  margin-top: -150px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  overflow: hidden;
+}
+
+/* 한 줄 */
+.search-overlay .marquee-row {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.search-overlay .marquee-row.reverse .marquee-content {
+  animation-direction: reverse !important;
+}
+
+.search-overlay .marquee-content {
+  display: inline-flex;
+  animation: marquee-scroll 55s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 이미지 */
+.search-overlay .marquee-img {
+  width: 230px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* hover */
+.search-overlay .marquee-img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .search-overlay .search-overlay-marquee {
+    margin-top: -170px;
+    gap: 25px;
+  }
+
+  .search-overlay .marquee-img {
+    width: 200px;
+    height: 140px;
+    margin-right: 12px;
+  }
+
+  .search-overlay .marquee-row {
+    gap: 20px;
+  }
+}

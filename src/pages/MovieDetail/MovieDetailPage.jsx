@@ -47,6 +47,9 @@ const MovieDetailPage = () => {
       </div>
     );
   }
+  const posterUrl = data.poster_path
+    ? `https://image.tmdb.org/t/p/original${data.poster_path}`
+    : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/390px-No-Image-Placeholder.svg.png";
 
   return (
     <>
@@ -60,7 +63,7 @@ const MovieDetailPage = () => {
       </div>
       <div className="movie-detail-info">
         <DetailInfo
-          poster={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+          poster={posterUrl}
           cast={data.credits?.cast
             ?.slice(0, 3)
             .map((c) => c.name)

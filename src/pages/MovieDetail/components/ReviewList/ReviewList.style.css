@@ -74,3 +74,37 @@
     margin-left: 1rem;
   }
 }
+
+.review-more-btn {
+  margin: 2rem auto 0;
+  padding: 0.7rem 1.4rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  background: transparent;
+  border: 1px solid #4b5563;
+  border-radius: 999px;
+
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.review-more-btn:hover {
+  border-color: #9ca3af;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.review-btn-icon {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .review-title {
+    margin-left: 1rem;
+  }
+}

@@ -9,11 +9,14 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { usePopularMoviesQuery } from "../../hooks/usePopularMovies";
 
 const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { data, isError, error } = usePopularMoviesQuery();
 
   const navigate = useNavigate();
 
@@ -39,6 +42,29 @@ const Navbar = () => {
   const handleOnSearch = () => {
     navigate(`/browse?q=${keyword}`);
   };
+
+  const handleSelectMovie = (id) => {
+    navigate(`/detail/${id}`);
+    setIsSearchOpen(false);
+  };
+
+  if (isError) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "600px",
+          color: "#E50914",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+        }}
+      >
+        <h2>{error.message}</h2>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -133,6 +159,72 @@ const Navbar = () => {
             />
           </div>
         </div>
+
+        {/* 슬라이드 구현 */}
+
+        {data &&
+          data.results &&
+          (() => {
+            const movies = data.results.filter((m) => m.backdrop_path);
+            const mid = Math.ceil(movies.length / 2);
+
+            const firstRow = movies.slice(0, mid);
+            const secondRow = movies.slice(mid);
+
+            return (
+              <div className="search-overlay-marquee">
+                <div className="marquee-row">
+                  <div className="marquee-content">
+                    {firstRow.map((movie) => (
+                      <img
+                        key={movie.id}
+                        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                        alt={movie.title}
+                        className="marquee-img"
+                        onClick={() => handleSelectMovie(movie.id)}
+                      />
+                    ))}
+
+                    {firstRow.map((movie) => (
+                      <img
+                        key={`first-dup-${movie.id}`}
+                        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                        alt={movie.title}
+                        className="marquee-img"
+                        onClick={() => handleSelectMovie(movie.id)}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* 두 번째 줄 */}
+                <div className="marquee-row reverse">
+                  <div className="marquee-content">
+                    {secondRow.map((movie) => (
+                      <img
+                        key={`row2-${movie.id}`}
+                        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                        alt={movie.title}
+                        className="marquee-img"
+                        onClick={() => handleSelectMovie(movie.id)}
+                      />
+                    ))}
+
+                    {/* 복제본 */}
+                    {secondRow.map((movie) => (
+                      <img
+                        key={`row2-dup-${movie.id}`}
+                        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                        alt={movie.title}
+                        className="marquee-img"
+                        onClick={() => handleSelectMovie(movie.id)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
       </div>
     </>
   );
